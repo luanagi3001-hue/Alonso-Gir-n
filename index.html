@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Luis Alonso Navarrete | Ingeniero Industrial & Estratega en Gestión Pública</title>
+    <!-- Google Fonts: Inter + Playfair Display para elegancia -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (gratis) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #eef2f0;
+            color: #1e2a25;
+            scroll-behavior: smooth;
+            line-height: 1.5;
+        }
+
+        /* fondo con sutileza */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 10% 30%, rgba(30, 60, 45, 0.02) 0%, rgba(18, 35, 28, 0.02) 100%);
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        /* glassmorph + sombras suaves */
+        .card {
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(0px);
+            border-radius: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0,0,0,0.02);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 25px 40px -14px rgba(0, 0, 0, 0.12);
+        }
+
+        /* HEADER elegancia */
+        .hero {
+            background: linear-gradient(105deg, #ffffff 0%, #f8fbf9 100%);
+            border-radius: 2rem;
+            padding: 2.8rem 2.8rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(70, 110, 80, 0.12);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: "✧";
+            font-size: 14rem;
+            opacity: 0.03;
+            position: absolute;
+            bottom: -3rem;
+            right: -2rem;
+            font-family: serif;
+            pointer-events: none;
+        }
+
+        .name {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #1c3b2c;
+            line-height: 1.2;
+            margin-bottom: 0.4rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e7f0eb;
+            color: #2b6e4a;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            margin-bottom: 1rem;
+            letter-spacing: 0.3px;
+        }
+
+        .title-main {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #406653;
+            margin-bottom: 1.2rem;
+            border-left: 3px solid #3b8360;
+            padding-left: 1rem;
+        }
+
+        .contact-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.4rem;
+            margin-top: 1.2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e0eae3;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.9rem;
+            color: #2f4d3c;
+            background: #f6faf7;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            transition: all 0.2s;
+        }
+
+        .contact-item i {
+            width: 1.25rem;
+            color: #3b8360;
+            font-size: 1rem;
+        }
+
+        /* layout grid */
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 2.1fr;
+            gap: 2rem;
+        }
+
+        /* sidebar */
+        .sidebar-card {
+            background: white;
+            border-radius: 1.8rem;
+            padding: 1.8rem;
+            height: fit-content;
+            border: 1px solid rgba(70, 110, 80, 0.1);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #1c3b2c;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.2px;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .section-title i {
+            font-size: 1.4rem;
+            color: #3b8360;
+        }
+
+        .about-text {
+            color: #2e3f37;
+            font-size: 0.95rem;
+            line-height: 1.55;
+            margin-bottom: 1.8rem;
+        }
+
+        .skill-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0 1.8rem 0;
+        }
+
+        .skill {
+            background: #f0f5f2;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #1f543e;
+            transition: all 0.2s;
+            border: 1px solid #dee8e2;
+        }
+
+        .skill:hover {
+            background: #3b8360;
+            color: white;
+            transform: translateY(-2px);
+            border-color: #3b8360;
+        }
+
+        .edu-item, .course-item {
+            margin-bottom: 1.2rem;
+        }
+
+        .edu-year {
+            font-weight: 700;
+            color: #3b8360;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .edu-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin: 0.2rem 0;
+        }
+
+        /* experiencia laboral */
+        .experience-card {
+            background: white;
+            border-radius: 1.8rem;
+            padding: 1.8rem;
+            border: 1px solid rgba(70, 110, 80, 0.1);
+        }
+
+        .job {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #ecf3ef;
+        }
+
+        .job:last-child {
+            border-bottom: 0;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .job-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #1a3527;
+        }
+
+        .job-date {
+            font-size: 0.75rem;
+            background: #eef3f0;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            color: #2b6747;
+            font-weight: 500;
+        }
+
+        .job-company {
+            font-weight: 500;
+            color: #3b8360;
+            font-size: 0.85rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .job-objective {
+            background: #f7fbf8;
+            padding: 0.8rem 1rem;
+            border-radius: 1rem;
+            font-size: 0.85rem;
+            margin: 0.75rem 0;
+            color: #2c4a3b;
+            border-left: 3px solid #3b8360;
+            font-style: normal;
+        }
+
+        .functions-list {
+            padding-left: 1.2rem;
+            list-style-type: none;
+        }
+
+        .functions-list li {
+            margin-bottom: 0.45rem;
+            font-size: 0.85rem;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .functions-list li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #3b8360;
+            font-size: 0.8rem;
+        }
+
+        .objective-highlight {
+            background: linear-gradient(120deg, #f0f7f3, #ffffff);
+            padding: 1.2rem;
+            border-radius: 1.5rem;
+            margin-bottom: 1.8rem;
+            border: 1px solid #e2ede6;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2.5rem;
+            font-size: 0.75rem;
+            color: #5e7468;
+            letter-spacing: 0.3px;
+        }
+
+        hr {
+            margin: 1rem 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, #cbdccb, transparent);
+        }
+
+        @media (max-width: 900px) {
+            .two-columns {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .hero {
+                padding: 1.8rem;
+            }
+            .name {
+                font-size: 2.2rem;
+            }
+            .container {
+                margin: 1rem auto;
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Hero profesional y elegante -->
+    <div class="hero card">
+        <div class="badge"><i class="fas fa-chalkboard-user" style="margin-right: 6px;"></i> Planificación Estratégica · Gestión por Resultados</div>
+        <div class="name">Luis Alonso Navarrete Girón</div>
+        <div class="title-main">Ingeniero Industrial | Especialista en Logística y Modernización Pública</div>
+        <div class="contact-flex">
+            <div class="contact-item"><i class="fas fa-phone-alt"></i> +503 7000 0000</div>
+            <div class="contact-item"><i class="far fa-envelope"></i> contacto.luis@ingeniero.org</div>
+            <div class="contact-item"><i class="fas fa-map-marker-alt"></i> El Salvador</div>
+            <div class="contact-item"><i class="fas fa-car"></i> Vehículo · Licencia vigente</div>
+        </div>
+    </div>
+
+    <div class="two-columns">
+        <!-- Columna lateral: perfil, habilidades, educación -->
+        <aside>
+            <div class="sidebar-card">
+                <div class="section-title">
+                    <i class="fas fa-user-astronaut"></i> <span>Perfil profesional</span>
+                </div>
+                <div class="about-text">
+                    Ingeniero Industrial con más de 20 años de experiencia en los sectores público y consultoría. 
+                    Experto en planificación estratégica y operativa, gestión por procesos, elaboración de normativa técnica, 
+                    seguimiento a proyectos de cooperación y desarrollo territorial. Liderazgo en equipos de modernización e innovación, 
+                    con dominio de metodologías ágiles y gestión por resultados (GpR).
+                </div>
+
+                <div class="section-title">
+                    <i class="fas fa-code"></i> <span>Competencias técnicas</span>
+                </div>
+                <div class="skill-cloud">
+                    <span class="skill">Visio (Avanzado)</span>
+                    <span class="skill">Project (Avanzado)</span>
+                    <span class="skill">Power BI (Intermedio)</span>
+                    <span class="skill">Excel (Intermedio)</span>
+                    <span class="skill">SQL / Java Básico</span>
+                    <span class="skill">SIPOC / BPMN</span>
+                    <span class="skill">Indicadores KPI</span>
+                    <span class="skill">Metodologías Ágiles</span>
+                    <span class="skill">Prezi / Storytelling</span>
+                </div>
+
+                <div class="section-title">
+                    <i class="fas fa-graduation-cap"></i> <span>Formación académica</span>
+                </div>
+                <div class="edu-item">
+                    <div class="edu-year">2001 · Universidad de El Salvador</div>
+                    <div class="edu-title">Ingeniería Industrial</div>
+                </div>
+                <div class="edu-item">
+                    <div class="edu-year">2022 · Posgrado en Logística</div>
+                    <div class="edu-title">Diplomado – Escuela de Posgrado, UES</div>
+                </div>
+                <div class="edu-item">
+                    <div class="edu-year">2015 · Gestión Pública</div>
+                    <div class="edu-title">Diplomado – Universidad José Matías Delgado</div>
+                </div>
+
+                <div class="section-title">
+                    <i class="fas fa-certificate"></i> <span>Diplomados & Cursos</span>
+                </div>
+                <div class="course-item"><i class="fas fa-check-circle" style="color:#3b8360; font-size:0.75rem; margin-right:6px;"></i> Seminario Logística y Transporte Internacional – ELATAM (2022)</div>
+                <div class="course-item"><i class="fas fa-check-circle" style="color:#3b8360; font-size:0.75rem; margin-right:6px;"></i> Innovación en el Sector Público – ESAP Colombia (2020)</div>
+                <div class="course-item"><i class="fas fa-check-circle" style="color:#3b8360; font-size:0.75rem; margin-right:6px;"></i> Gestión Pública con Base a Indicadores – Corte de Cuentas (2017)</div>
+                <div class="course-item"><i class="fas fa-check-circle" style="color:#3b8360; font-size:0.75rem; margin-right:6px;"></i> Indicadores de Gestión Empresarial – UCA/INSAFORP (2017)</div>
+                <div class="course-item"><i class="fas fa-check-circle" style="color:#3b8360; font-size:0.75rem; margin-right:6px;"></i> Seguridad y Salud Ocupacional (2014)</div>
+            </div>
+        </aside>
+
+        <!-- Columna principal: experiencia y objetivo -->
+        <main>
+            <div class="experience-card">
+                <div class="objective-highlight">
+                    <div class="section-title" style="margin-bottom: 0.4rem;">
+                        <i class="fas fa-bullseye"></i> <span>Objetivo profesional</span>
+                    </div>
+                    <p style="font-size: 0.92rem; font-weight: 400; color: #2c4a3b;">Asesorar, conducir y coordinar los procesos institucionales mediante la formulación estratégica y el seguimiento a planes, proyectos e inversión pública, contribuyendo a la toma de decisiones y a la mejora continua de la gestión con un enfoque de calidad y resultados.</p>
+                </div>
+
+                <div class="section-title">
+                    <i class="fas fa-briefcase"></i> <span>Trayectoria profesional</span>
+                </div>
+
+                <!-- Experiencia 1 -->
+                <div class="job">
+                    <div class="job-header">
+                        <span class="job-title">Técnico de Planificación · Encargado de Área</span>
+                        <span class="job-date">Oct 2023 – Actualidad</span>
+                    </div>
+                    <div class="job-company"><i class="fas fa-building"></i> Administración Nacional de Acueductos y Alcantarillados (ANDA) · Gobierno</div>
+                    <div class="job-objective">Liderazgo en procesos de planificación estratégica, monitoreo del PEI y POA, aseguramiento del alineamiento con políticas nacionales.</div>
+                    <ul class="functions-list">
+                        <li>Coordinación de equipos para el diseño y actualización de manuales administrativos y diagramas SIPOC.</li>
+                        <li>Implementación de indicadores de gestión y análisis de tiempos/movimientos.</li>
+                        <li>Encargado del Equipo de Modernización e Innovación (EMMI) y Comité de Salud Ocupacional.</li>
+                    </ul>
+                </div>
+
+                <!-- Experiencia 2 -->
+                <div class="job">
+                    <div class="job-header">
+                        <span class="job-title">Jefe de Unidad de Planificación</span>
+                        <span class="job-date">Sep 2014 – Feb 2019</span>
+                    </div>
+                    <div class="job-company"><i class="fas fa-building"></i> Dirección Nacional de Medicamentos (DNA) · Gobierno</div>
+                    <ul class="functions-list">
+                        <li>Asesoría directa a la dirección nacional en políticas institucionales y vinculación con planes de gobierno.</li>
+                        <li>Coordinación del PEI, memorias de labores, rendición de cuentas y valoración de riesgos.</li>
+                        <li>Elaboración de perfiles de proyectos públicos y seguimiento de indicadores estratégicos.</li>
+                    </ul>
+                </div>
+
+                <!-- Experiencia 3 -->
+                <div class="job">
+                    <div class="job-header">
+                        <span class="job-title">Jefe de Unidad de Planificación</span>
+                        <span class="job-date">Feb 2010 – Ago 2014</span>
+                    </div>
+                    <div class="job-company"><i class="fas fa-clinic-medical"></i> Instituto Salvadoreño de Rehabilitación Integral (ISRI)</div>
+                    <ul class="functions-list">
+                        <li>Dirección y coordinación del plan quinquenal de inversión pública y presupuesto anual.</li>
+                        <li>Implementación de sistemas de monitoreo y evaluación de objetivos institucionales.</li>
+                        <li>Supervisión de normativa y manuales de organización.</li>
+                    </ul>
+                </div>
+
+                <!-- Experiencia 4 -->
+                <div class="job">
+                    <div class="job-header">
+                        <span class="job-title">Técnico de Planificación · Analista de Organización y Métodos</span>
+                        <span class="job-date">Jun 2004 – Ene 2010</span>
+                    </div>
+                    <div class="job-company"><i class="fas fa-chart-line"></i> Instituto Salvadoreño de Rehabilitación de Inválidos (ISRI)</div>
+                    <ul class="functions-list">
+                        <li>Levantamiento de procesos, diagramas de flujo, diseño de manuales administrativos.</li>
+                        <li>Encargado del Sistema de Información de Inversión Pública (SIIP) – Ministerio de Hacienda.</li>
+                        <li>Formulación y evaluación de proyectos, análisis estadístico para toma de decisiones.</li>
+                    </ul>
+                </div>
+
+                <!-- Experiencia 5 -->
+                <div class="job">
+                    <div class="job-header">
+                        <span class="job-title">Jefe de Servicios Generales</span>
+                        <span class="job-date">May 2002 – May 2004</span>
+                    </div>
+                    <div class="job-company"><i class="fas fa-tools"></i> Instituto Salvadoreño de Rehabilitación de Inválidos (ISRI)</div>
+                    <ul class="functions-list">
+                        <li>Gestión integral de servicios: vigilancia, transporte, mantenimiento, mensajería y limpieza.</li>
+                        <li>Optimización de recursos para el correcto funcionamiento institucional.</li>
+                    </ul>
+                </div>
+
+                <hr>
+                <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem;">
+                    <span style="font-size: 0.75rem; background: #eef3f0; padding: 0.2rem 1rem; border-radius: 40px;"><i class="fas-regular fa-clock"></i> Disponibilidad inmediata</span>
+                    <span style="font-size: 0.75rem; background: #eef3f0; padding: 0.2rem 1rem; border-radius: 40px;"><i class="fas fa-globe"></i> Trabajo remoto / presencial</span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <i class="far fa-copyright"></i> 2025 · Portafolio profesional de Luis Alonso Navarrete Girón · Ingeniero Industrial · Especialista en planificación y modernización del Estado
+    </footer>
+</div>
+</body>
+</html>
